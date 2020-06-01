@@ -28,4 +28,9 @@ public class OverviewActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void logOutClick(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
