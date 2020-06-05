@@ -40,21 +40,14 @@ public class BudgetFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_budget, container, false);
 
-        //budgetAllocated = (TextView) view.findViewById(R.id.budgetAllocated);
         budgetEditAmount = (EditText) view.findViewById(R.id.budgetEditAmount);
         budgetEdit = (Button) view.findViewById(R.id.budgetEdit);
-
-        //sharedPref = getActivity().getSharedPreferences("com.example.assessment2", Context.MODE_PRIVATE);
-        // Get the saved budget from shared preferences and append it to the budgetAllocated TextView
-        //savedBudget = sharedPref.getString(SAVED_BUDGET, "failed");
-        //budgetAllocated.setText("$" + savedBudget);
 
         // Change the allocated budget to the entered amount on click of edit button
         budgetEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String newBudget = budgetEditAmount.getText().toString();
-                //budgetAllocated.setText("$" + newBudget);
                 Intent budgetIntent = new Intent(getActivity(), OverviewActivity.class);
                 budgetIntent.putExtra("ALLOCATED_BUDGET", newBudget);
                 startActivity(budgetIntent);

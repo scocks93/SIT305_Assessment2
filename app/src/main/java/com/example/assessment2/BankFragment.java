@@ -1,5 +1,6 @@
 package com.example.assessment2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -31,8 +32,21 @@ public class BankFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_bank, container, false);
 
+
         amountToAdd = (EditText) view.findViewById(R.id.amountToAdd);
-        //addToBalance = (Button) view.findViewById(R.id.addToBalance);
+        addToBalance = (Button) view.findViewById(R.id.addToBalance);
+        addToBalance.setVisibility(View.VISIBLE);
+
+        // When the add to balance button is clicked, pass the string to overview using intent
+        addToBalance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newBalance = amountToAdd.getText().toString();
+                Intent balanceIntent = new Intent(getActivity(), OverviewActivity.class);
+                balanceIntent.putExtra("NEW_BALANCE", newBalance);
+                startActivity(balanceIntent);
+            }
+        });
 
 
         return view;

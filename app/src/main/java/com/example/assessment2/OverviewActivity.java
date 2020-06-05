@@ -18,7 +18,9 @@ public class OverviewActivity extends AppCompatActivity {
     String currentBalance, allocatedBudget, groceries, travel, rent;
     String savedBudget;
     String SAVED_BUDGET;
-    TextView overviewCurrentBalance, overviewAllocatedBudget, overviewGroceries, overviewTravel, overviewRent;
+    double expensesTotal, remainingBudget;
+    TextView overviewCurrentBalance, overviewAllocatedBudget, overviewExpensesToDate, overviewRemainingBudget;
+    TextView overviewGroceries, overviewTravel, overviewRent;
     Button menuButton;
     SharedPreferences budgetSharedPref;
 
@@ -34,15 +36,14 @@ public class OverviewActivity extends AppCompatActivity {
 //        savedBudget = budgetSharedPref.getString(SAVED_BUDGET, "failed");
 //        overviewCurrentBalance.setText("$" + savedBudget);
 
-//        // Get entered bank balance, display in corresponding text view
-//        overviewCurrentBalance = (TextView) findViewById(R.id.overviewCurrentBalance);
-//        Intent balanceIntent = getIntent();
-//        currentBalance = balanceIntent.getStringExtra("CURRENT_BALANCE");
-//        overviewCurrentBalance.setText("$" + currentBalance);
+        // Get entered bank balance, display in corresponding text view
+        overviewCurrentBalance = (TextView) findViewById(R.id.overviewCurrentBalance);
+        Intent balanceIntent = getIntent();
+        currentBalance = balanceIntent.getStringExtra("NEW_BALANCE");
+        overviewCurrentBalance.setText("$" + currentBalance);
 
         // Get allocated budget, display in corresponding text view
         overviewAllocatedBudget = (TextView) findViewById(R.id.overviewAllocatedBudget);
-        //overviewAllocatedBudget.setText("$0.1");
         Intent budgetIntent = getIntent();
         allocatedBudget = budgetIntent.getStringExtra("ALLOCATED_BUDGET");
         overviewAllocatedBudget.setText("$" + allocatedBudget);
@@ -65,6 +66,17 @@ public class OverviewActivity extends AppCompatActivity {
         rent = rentIntent.getStringExtra("RENT_EXPENSE");
         overviewRent.setText("$" + rent);
 
+        // Add the three expense values together to display total expenses to date
+//        overviewExpensesToDate = (TextView) findViewById(R.id.overviewExpensesToDate);
+//        expensesTotal = Double.parseDouble(groceries) + Double.parseDouble(travel) + Double.parseDouble(rent);
+//        overviewExpensesToDate.setText("$" + expensesTotal);
+
+        // Subtract expenses to date from allocated budget to display remaining budget for the month
+//        overviewRemainingBudget = (TextView) findViewById(R.id.overviewRemainingBudget);
+//        remainingBudget = Double.parseDouble(allocatedBudget) - expensesTotal;
+//        overviewRemainingBudget.setText("$" + remainingBudget);
+
+        // Navigation to the menu activity when menu button is clicked
         menuButton = (Button) findViewById(R.id.menuButton);
         menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
